@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.plaid</groupId>
 	<artifactId>plaid-java</artifactId>
-	<version>0.3.2-SNAPSHOT</version>
+	<version>0.3.2</version>
 	<packaging>jar</packaging>
 
 	<parent>
@@ -198,15 +198,10 @@
 	</build>
 
 	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<name>Sonatype Nexus snapshot repository</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
 		<repository>
-			<id>ossrh</id>
-			<name>Sonatype Nexus release repository</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<id>anze-maven-repo</id>
+			<name>Anze's Bintray</name>
+			<url>https://api.bintray.com/maven/anzecesar/maven/${project.artifactId}/;publish=1</url>
 		</repository>
 	</distributionManagement>
 
