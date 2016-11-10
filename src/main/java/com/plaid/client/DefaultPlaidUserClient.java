@@ -360,6 +360,16 @@ public class DefaultPlaidUserClient implements PlaidUserClient {
          return handlePost("/info", requestParams, InfoResponse.class);
     }
 
+    @Override
+    public InfoResponse info() {
+        if (StringUtils.isEmpty(accessToken)) {
+            throw new PlaidClientsideException("No accessToken set");
+        }
+
+        return handlePost("/info/get", InfoResponse.class);
+
+    }
+
     private <T extends PlaidUserResponse> T handleMfa(String path, Object mfa, String type, Class<T> returnTypeClass) throws PlaidMfaException {
 
         if (StringUtils.isEmpty(accessToken)) {
@@ -375,6 +385,10 @@ public class DefaultPlaidUserClient implements PlaidUserClient {
         }
 
         return handlePost(path, requestParams, returnTypeClass);
+    }
+
+    private <T extends PlaidUserResponse> T handlePost(String path, Class<T> returnTypeClass) throws PlaidMfaException {
+        return handlePost(path, new HashMap<String, Object>(), returnTypeClass);
     }
 
     private <T extends PlaidUserResponse> T handlePost(String path, Map<String, Object> requestParams, Class<T> returnTypeClass) throws PlaidMfaException {

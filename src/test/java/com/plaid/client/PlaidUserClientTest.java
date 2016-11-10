@@ -112,6 +112,15 @@ public class PlaidUserClientTest {
     }
 
     @Test
+    public void testInfoGetWellsFargo() {
+        plaidUserClient.setAccessToken("test_wells");
+        InfoResponse response = plaidUserClient.info();
+
+        assertEquals("test_wells",response.getAccessToken());
+        assertNotNull(response.getInfo());
+    }
+
+    @Test
     public void testUpdateTransactions() {
 
         plaidUserClient.setAccessToken("test_wells");
