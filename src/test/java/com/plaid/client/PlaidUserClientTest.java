@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import com.plaid.client.response.*;
 import org.apache.http.HttpStatus;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -17,14 +18,8 @@ import com.plaid.client.http.ApacheHttpClientHttpDelegate;
 import com.plaid.client.http.HttpDelegate;
 import com.plaid.client.request.ConnectOptions;
 import com.plaid.client.request.Credentials;
-import com.plaid.client.response.AccountsResponse;
-import com.plaid.client.response.InfoResponse;
-import com.plaid.client.response.MessageResponse;
-import com.plaid.client.response.MfaResponse;
 import com.plaid.client.response.MfaResponse.DeviceChoiceMfaResponse;
 import com.plaid.client.response.MfaResponse.DeviceListMfaResponse;
-import com.plaid.client.response.TransactionsResponse;
-import com.plaid.client.response.PlaidUserResponse;
 
 public class PlaidUserClientTest {
 
@@ -118,6 +113,15 @@ public class PlaidUserClientTest {
 
         assertEquals("test_wells",response.getAccessToken());
         assertNotNull(response.getInfo());
+    }
+
+    @Test
+    public void testIncomeGetWellsFargo() {
+        plaidUserClient.setAccessToken("test_wells");
+        IncomeResponse response = plaidUserClient.income();
+
+        assertEquals("test_wells",response.getAccessToken());
+        assertNotNull(response.getIncome());
     }
 
     @Test
