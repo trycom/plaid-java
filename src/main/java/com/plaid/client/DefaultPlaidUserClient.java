@@ -379,6 +379,15 @@ public class DefaultPlaidUserClient implements PlaidUserClient {
         return handlePost("/income/get", IncomeResponse.class);
     }
 
+    @Override
+    public AccountsResponse risk() {
+        if (StringUtils.isEmpty(accessToken)) {
+            throw new PlaidClientsideException("No accessToken set");
+        }
+
+        return handlePost("/risk/get", AccountsResponse.class);
+    }
+
     private <T extends PlaidUserResponse> T handleMfa(String path, Object mfa, String type, Class<T> returnTypeClass) throws PlaidMfaException {
 
         if (StringUtils.isEmpty(accessToken)) {

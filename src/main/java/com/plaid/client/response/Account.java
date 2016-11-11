@@ -13,6 +13,8 @@ public class Account {
     private Balance balance;
     private AccountMeta meta;
     private AccountNumbers numbers;
+
+    private Risk risk;
     
     private String institutionType;
     private String type;
@@ -76,6 +78,14 @@ public class Account {
     public void setSubtype(String subtype) {
 		this.subtype = subtype;
 	}
+
+    public Risk getRisk() {
+        return risk;
+    }
+
+    public void setRisk(Risk risk) {
+        this.risk = risk;
+    }
 
     @JsonIgnoreProperties(ignoreUnknown=true)
     public final static class Balance {
