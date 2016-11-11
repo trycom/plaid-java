@@ -64,6 +64,8 @@ public interface PlaidUserClient {
 
     IncomeResponse income();
 
+    AccountsResponse risk();
+
     TransactionsResponse addProduct(String product, ConnectOptions options);
 
     HttpDelegate getHttpDelegate();

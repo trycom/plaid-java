@@ -125,6 +125,16 @@ public class PlaidUserClientTest {
     }
 
     @Test
+    public void testRiskGetWellsFargo() {
+        plaidUserClient.setAccessToken("test_wells");
+        AccountsResponse response = plaidUserClient.risk();
+
+        assertEquals("test_wells",response.getAccessToken());
+        assertNotNull(response.getAccounts());
+        assertNotNull(response.getAccounts().get(0).getRisk());
+    }
+
+    @Test
     public void testUpdateTransactions() {
 
         plaidUserClient.setAccessToken("test_wells");
